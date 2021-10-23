@@ -10,8 +10,6 @@ const changeResp = (event) => {
 //Evento que reconoce el value
 document.getElementById("provincias").addEventListener("change", changeResp);
 
-// document.getElementById("box_localidades").innerHTML= ;
-
 //Funcion de respuesta del  ajax
 const onResponse = (response) => {
     document.getElementById("box_localidades").innerHTML= response;
@@ -37,3 +35,4 @@ setTimeout(function(){
 )
   request.send();
 }
+document.getElementById("box_localidades").innerHTML= makeRequest(1);
