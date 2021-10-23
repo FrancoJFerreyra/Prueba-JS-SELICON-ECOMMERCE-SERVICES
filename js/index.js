@@ -1,16 +1,23 @@
 const url = `https://cors-anywhere.herokuapp.com/http://sitelicon.eu/test/ajax_localidades.php`;
 
+
+//Funcion del evento que reconoce el value seleccionado
 const changeResp = (event) => {
-  const id = event.target.value;
-  makeRequest(id);
+    const id = event.target.value;
+    makeRequest(id);
 }
 
+//Evento que reconoce el value
 document.getElementById("provincias").addEventListener("change", changeResp);
 
+// document.getElementById("box_localidades").innerHTML= ;
+
+//Funcion de respuesta del  ajax
 const onResponse = (response) => {
     document.getElementById("box_localidades").innerHTML= response;
 }
 
+//Funcion de ajax
 const makeRequest = (id) => {
   const request = new XMLHttpRequest();
 
@@ -23,6 +30,10 @@ const makeRequest = (id) => {
     } else {
       alert(`No se a podido encontrar la información`)
     }
-  };
+};
+setTimeout(function(){
+        document.getElementById("box_localidades").textContent= `Cargando Localidades...`
+    }
+)
   request.send();
 }
