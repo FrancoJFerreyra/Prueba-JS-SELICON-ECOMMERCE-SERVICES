@@ -12,27 +12,26 @@ document.getElementById("provincias").addEventListener("change", changeResp);
 
 //Funcion de respuesta del  ajax
 const onResponse = (response) => {
-    document.getElementById("box_localidades").innerHTML= response;
+    document.getElementById("box_localidades").innerHTML = response;
 }
 
 //Funcion de ajax
 const makeRequest = (id) => {
-  const request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
 
-  request.open('GET', `${url}?id=${id}`, true);
+    request.open('GET', `${url}?id=${id}`, true);
 
-  request.onload = function() {
-    if (this.status >= 200 && this.status < 400) {
-      // Success!
-      onResponse(this.response);
-    } else {
-      alert(`No se a podido encontrar la información`)
-    }
-};
-setTimeout(function(){
-        document.getElementById("box_localidades").textContent= `Cargando Localidades...`
-    }
-)
-  request.send();
+    request.onload = function() {
+        if (this.status >= 200 && this.status < 400) {
+            // Success!
+            onResponse(this.response);
+        } else {
+            alert(`No se a podido encontrar la información`)
+        }
+    };
+    setTimeout(function() {
+        document.getElementById("box_localidades").textContent = `Cargando Localidades...`
+    })
+    request.send();
 }
-document.getElementById("box_localidades").innerHTML= makeRequest(1);
+document.getElementById("box_localidades").innerHTML = makeRequest(1);
