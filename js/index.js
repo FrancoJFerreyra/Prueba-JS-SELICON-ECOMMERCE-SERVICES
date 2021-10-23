@@ -8,7 +8,7 @@ const changeResp = (event) => {
 document.getElementById("provincias").addEventListener("change", changeResp);
 
 const onResponse = (response) => {
-    document.getElementById("box_localidades").innerHTML;
+    document.getElementById("box_localidades").innerHTML= response;
 }
 
 const makeRequest = (id) => {
@@ -25,5 +25,4 @@ const makeRequest = (id) => {
     }
   };
   request.send();
-  console.log(request.send);
 }
