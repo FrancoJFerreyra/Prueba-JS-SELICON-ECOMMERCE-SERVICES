@@ -1,31 +1,29 @@
-let url = `https://cors-anywhere.herokuapp.com/http://sitelicon.eu/test/ajax_localidades.php?`;
-console.log(url);
+const url = `https://cors-anywhere.herokuapp.com/http://sitelicon.eu/test/ajax_localidades.php`;
 
+const changeResp = (event) => {
+  const id = event.target.value;
+  makeRequest(id);
+}
 
-let dataValue = () => {
-  let select = document.getElementById("#provinces");
-  select.addEventListener("change", changeResp) 
-     changeResp = () => {
+document.getElementById("provincias").addEventListener("change", changeResp);
 
-  }}
+const onResponse = (response) => {
+    document.getElementById("box_localidades").innerHTML;
+}
 
-// function(){
-  
-// }
+const makeRequest = (id) => {
+  const request = new XMLHttpRequest();
 
-const request = new XMLHttpRequest();
+  request.open('GET', `${url}?id=${id}`, true);
 
-request.open('GET', `${url}`, true);
-
-request.onload = function() {
-  if (this.status >= 200 && this.status < 400) {
-    // Success!
-    let resp = this.response;
-    console.log(resp);
-  } else {
+  request.onload = function() {
+    if (this.status >= 200 && this.status < 400) {
+      // Success!
+      onResponse(this.response);
+    } else {
       alert(`No se a podido encontrar la información`)
-  }
-};
-
-request.send();
-console.log(request.send);
+    }
+  };
+  request.send();
+  console.log(request.send);
+}
